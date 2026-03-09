@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NewsGuard AI | Intelligent News Verification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent px-5 py-3">
+    <a class="navbar-brand fw-bold" href="#">NewsGuard AI</a>
+    <div>
+        <a class="nav-link d-inline text-white" href="/">Home</a>
+        <a class="nav-link d-inline text-white" href="/about">About</a>
+        <a class="nav-link d-inline text-white" href="/history">History</a>
+    </div>
+</nav>
+
+<section class="hero text-center d-flex align-items-center justify-content-center">
+    <div>
+        <h1 class="display-4 fw-bold">Intelligent Fake News Detection</h1>
+        <p class="lead mt-3">
+            AI-powered verification trained on 40,000+ news articles with 98% accuracy.
+        </p>
+    </div>
+</section>
+
+<div class="container glass-card p-5 mt-5">
+
+    <h3 class="text-center mb-4">Analyze News Article</h3>
+
+    <form method="POST">
+        <textarea name="news_text" class="form-control mb-4" rows="6"
+            placeholder="Paste the full news article text here..." required></textarea>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-premium btn-lg px-5">
+                Analyze Article
+            </button>
+        </div>
+    </form>
+
+    {% if prediction %}
+    <div class="result-section mt-5 text-center">
+
+        <h4>Prediction Result</h4>
+
+        <h1 class="{% if prediction == 'REAL NEWS' %}text-success{% else %}text-danger{% endif %}">
+            {{ prediction }}
+        </h1>
+
+        {% if confidence %}
+        <div class="progress mt-4" style="height: 25px;">
+            <div class="progress-bar 
+                {% if prediction == 'REAL NEWS' %}bg-success{% else %}bg-danger{% endif %}" 
+                role="progressbar" 
+                style="width: confidence;" 
+                aria-valuenow="{{ confidence }}" 
+                aria-valuemin="0" 
+                aria-valuemax="100">
+                {{ confidence }}%
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+    {% endif %}
+
+</div>
+
+<section class="metrics text-center mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>98%</h2>
+                <p>Model Accuracy</p>
+            </div>
+            <div class="col-md-4">
+                <h2>40K+</h2>
+                <p>Training Articles</p>
+            </div>
+            <div class="col-md-4">
+                <h2>AI Powered</h2>
+                <p>Logistic Regression + TF-IDF</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="text-center mt-5 pb-4 text-white">
+    <small>© 2026 NewsGuard AI | Intelligent News Verification</small>
+</footer>
+
+</body>
+</html>

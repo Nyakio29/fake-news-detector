@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+}
+
+.hero {
+    height: 55vh;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+textarea {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+textarea::placeholder {
+    color: #ddd;
+}
+
+.btn-premium {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    border: none;
+    border-radius: 50px;
+    transition: 0.3s ease;
+}
+
+.btn-premium:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 114, 255, 0.5);
+}
+
+.metrics {
+    padding: 60px 0;
+}
+
+.metrics h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
